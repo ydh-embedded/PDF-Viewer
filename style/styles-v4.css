@@ -1,0 +1,428 @@
+/* Basic styles for light and dark themes */
+[data-theme="dark"] {
+  background-color: #1d1d1f;
+  color: white;
+}
+
+/* Apple-inspired Design */
+:root {
+  --apple-gray: #f5f5f7;
+  --apple-dark: #1d1d1f;
+  --apple-blue: #0071e3;
+  --apple-blue-hover: #0077ed;
+  --apple-footer: #f5f5f7;
+  --apple-border: #d2d2d7;
+
+  /* Dark theme variables */
+  --background-color: var(--apple-gray);
+  --text-color: black;
+}
+
+[data-theme="dark"] {
+  --background-color: var(--apple-dark);
+  --text-color: white;
+}
+
+/* Apply the variables */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
+  margin: 2rem;
+  color: #333;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 360px;
+  margin: 0 auto 2rem;
+}
+h1 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+/* Container for entire slider */
+.switch {
+  background: #aaa;
+  padding: 0.5rem 1rem;
+  width: 9rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.6),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* The track area */
+.buttonbackground {
+  background-color: #ccc;
+  position: relative;
+  width: 5rem;
+  height: 2.5rem; /* = width/2 */
+  border-radius: 1.25rem; /* = height/2 */
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5) inset,
+    0 -2px 0 rgba(255, 255, 255, 0.5) inset;
+}
+
+/* Hide the checkbox visually but keep it accessible */
+input[type="checkbox"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+/* The circular knob */
+.slider-knob {
+  position: absolute;
+  top: 0.1rem;
+  left: 0.1rem;
+  width: 2.3rem;
+  height: 2.3rem;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  transition: left 0.3s ease;
+}
+
+/* Move knob to right when checked */
+input[type="checkbox"]:checked + .slider-knob {
+  left: 2.6rem; /* 5rem track width - knob width - margin */
+}
+
+/* Sun and moon icons outside the slider track */
+.sun-icon,
+.moon-icon {
+  font-size: 1.2rem;
+  user-select: none;
+  color: #ffb703; /* sun - warm yellow */
+  transition: color 0.3s ease;
+}
+.moon-icon {
+  color: #264653; /* moon - cool dark blue */
+}
+
+/* When theme toggle is checked, change the sun icon color for subtle effect */
+input[type="checkbox"]:checked ~ .sun-icon {
+  color: #aaa;
+}
+input[type="checkbox"]:not(:checked) ~ .moon-icon {
+  color: #aaa;
+}
+
+.header {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--apple-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 1rem;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  max-width: 1072px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.pdf-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: inherit; /* Inherit from the body */
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.pdf-container:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+#pdf-viewer {
+  width: 100%;
+  height: 80vh;
+  background-color: inherit; /* Inherit from the body */
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 800px;
+  background-color: inherit; /* Inherit from the body */
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+button {
+  background-color: var(--apple-blue);
+  border: none;
+  color: white;
+  padding: 0.6rem 1.25rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 980px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--apple-blue-hover);
+  transform: scale(1.03);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:disabled {
+  background-color: #86b9e8;
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+}
+
+.page-info {
+  font-size: 15px;
+  margin: 0 1rem;
+  display: flex;
+  align-items: center;
+  color: var(--apple-dark);
+}
+
+input[type="number"] {
+  width: 50px;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--apple-border);
+  text-align: center;
+  font-size: 14px;
+  font-family: inherit;
+  margin: 0 0.5rem;
+  outline: none;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"]:focus {
+  border-color: var(--apple-blue);
+  box-shadow: 0 0 0 2px rgba(0, 125, 250, 0.2);
+}
+
+.zoom-control {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #f5f5f7;
+  border-radius: 980px;
+  padding: 0.25rem;
+}
+
+.zoom-control button {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#zoom-level {
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 50px;
+  text-align: center;
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: var(--apple-dark);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.loading:before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ddd;
+  border-top-color: var(--apple-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.footer {
+  background-color: var(--apple-footer);
+  color: #86868b;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  margin-top: auto;
+  font-size: 12px;
+  border-top: 1px solid var(--apple-border);
+}
+
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  #pdf-viewer {
+    height: 65vh;
+  }
+
+  .container {
+    padding: 1rem 0.75rem;
+  }
+}
+
+/* Buchdesign */
+.book-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  perspective: 1500px;
+}
+
+.book {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+  transition: transform 0.5s;
+}
+
+.page-turn-effect .book {
+  animation: pageFlip 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+@keyframes pageFlip {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(-12deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+.book-shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.01) 10%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.01) 90%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+.upload-section {
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.file-button {
+  background-color: rgba(0, 113, 227, 0.9);
+  width: 100%;
+  padding: 0.75rem 2rem;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+
+.file-button:hover {
+  background-color: var(--apple-blue);
+  transform: translateY(-2px);
+}
+
+#filename {
+  display: block;
+  font-size: 14px;
+  color: #86868b;
+  margin-top: 0.5rem;
+}
