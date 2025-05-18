@@ -17,12 +17,19 @@
             background-color: white;
             color: black;
         }
-        
+
+        /* Ensure the PDF viewer and controls adapt to the theme */
+        .pdf-container {
+            background-color: inherit; /* Inherit from the body */
+        }
+
+        .controls {
+            background-color: inherit; /* Inherit from the body */
+        }
+
         .hidden {
             display: none;
         }
-
-        /* Additional styles for the PDF viewer and controls can be added here */
     </style>
 </head>
 
@@ -129,14 +136,13 @@
                 canvas.height = viewport.height;
                 canvas.width = viewport.width;
 
-                // Dark Mode anpassen
                 const isDarkMode =
                     document.documentElement.getAttribute("data-theme") === "dark";
 
                 const renderContext = {
                     canvasContext: ctx,
                     viewport: viewport,
-                    background: isDarkMode ? "#1d1d1f" : "white",
+                    background: isDarkMode ? "#1d1d1f" : "white", // Set canvas background
                 };
 
                 const renderTask = page.render(renderContext);
@@ -198,55 +204,6 @@
                     fileReader.readAsArrayBuffer(file);
                 }
             });
-
-        // Direkte Seiteneingabe
-        document
-            .getElementById("current-page")
-            .addEventListener("change", function () {
-                let newPage = parseInt(this.value);
-                if (pdfDoc) {
-                    if (newPage < 1) newPage = 1;
-                    else if (newPage > pdfDoc.numPages) newPage = pdfDoc.numPages;
-                    pageNum = newPage;
-                    renderPage(newPage);
-                    this.value = newPage;
-                }
-            });
-
-        // Event-Listener hinzufügen
-        document
-            .getElementById("prev-page")
-            .addEventListener("click", function () {
-                if (pageNum <= 1) return;
-                pageNum--;
-                renderPage(pageNum);
-            });
-        document
-            .getElementById("next-page")
-            .addEventListener("click", function () {
-                if (pageNum >= pdfDoc.numPages) return;
-                pageNum++;
-                renderPage(pageNum);
-            });
-
-        document.getElementById("zoom-in").addEventListener("click", function () {
-            scale += 0.2;
-            renderPage(pageNum);
-        });
-        document.getElementById("zoom-out").addEventListener("click", function () {
-            if (scale <= 0.4) return;
-            scale -= 0.2;
-            renderPage(pageNum);
-        });
-
-        document.getElementById("fullscreen-btn").addEventListener("click", function () {
-            const container = document.querySelector(".pdf-container");
-            if (!document.fullscreenElement) {
-                container.requestFullscreen();
-            } else {
-                document.exitFullscreen();
-            }
-        });
 
         // Toggle controls visibility
         const toggleControlsBtn = document.getElementById("toggle-controls-btn");
