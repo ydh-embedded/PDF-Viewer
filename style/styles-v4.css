@@ -289,6 +289,17 @@ input[type="number"]:focus {
   text-align: center;
 }
 
+/* Add any additional styles here */
+.hidden {
+  display: none;
+}
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 .loading {
   position: absolute;
   top: 50%;
